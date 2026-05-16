@@ -937,21 +937,9 @@ document.addEventListener('click',e=>{
 });
 
 setTimeout(buildSearchIndex,800);
-  let node;
-  while((node=w.nextNode())){
-    const i=node.textContent.toLowerCase().indexOf(q.toLowerCase());
-    if(i!==-1){
-      const r=document.createRange();r.setStart(node,i);r.setEnd(node,i+q.length);
-      const m=document.createElement('mark');m.className='highlight';
-      r.surroundContents(m);lastMark=m;
-      m.scrollIntoView({behavior:'smooth',block:'center'});
-      showToast(`Found: "${q}"`);
-      setTimeout(()=>{if(lastMark){const p=lastMark.parentNode;if(p){p.replaceChild(document.createTextNode(lastMark.textContent),lastMark);p.normalize();}lastMark=null;}},3200);
-      return;
-    }
   }
   showToast(`No results for "${q}"`);
-}
+   }
   
   /* TOAST */
 let toastT;
