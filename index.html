@@ -171,12 +171,15 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 .rows-wrap{position:relative;z-index:10;margin-top:-10vh;padding-top:calc(var(--nav-h) + 44px)}
 
 /* Single row */
-.nf-row{
-  margin-bottom:3vw;padding:0 4%;
-  opacity:0;transform:translateY(28px);
-  transition:opacity .6s ease,transform .6s ease;
+.nf-row {
+  margin-bottom: 3vw;
+  padding: 0 4%;
+  opacity: 0;
+  transition: opacity .6s ease;
 }
-.nf-row.vis{opacity:1;transform:none}
+.nf-row.vis {
+  opacity: 1;
+}
 
 .row-header{display:flex;align-items:baseline;gap:12px;margin-bottom:10px;cursor:default}
 .row-title{font-size:clamp(14px,1.4vw,18px);font-weight:700;color:var(--white)}
