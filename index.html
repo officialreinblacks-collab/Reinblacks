@@ -937,10 +937,8 @@ document.addEventListener('click',e=>{
 });
 
 setTimeout(buildSearchIndex,800);
-  }
+   
   showToast(`No results for "${q}"`);
-   }
-  
   /* TOAST */
 let toastT;
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600)}
