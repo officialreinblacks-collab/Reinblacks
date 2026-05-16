@@ -816,6 +816,8 @@ function scrollTo2(id){const el=document.getElementById(id);if(el)el.scrollIntoV
 
 /* SEARCH */
 const SEARCH_DB=[];
+function doSearch(){return;}
+let lastMark=null;
 
 function buildSearchIndex(){
   document.querySelectorAll('.nf-card.wide').forEach(card=>{
