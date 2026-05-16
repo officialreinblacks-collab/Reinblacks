@@ -168,7 +168,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 /* ═══════════════════════════════════════════════
    ROWS WRAPPER
 ═══════════════════════════════════════════════ */
-.rows-wrap{position:relative;z-index:10;margin-top:0;...};padding-top:calc(var(--nav-h) + 44px)}
+.rows-wrap{position:relative;z-index:10;margin-top:0;padding-top:calc(var(--nav-h) + 44px)}
 
 /* Single row */
 .nf-row {
@@ -239,7 +239,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
   background:#1f1f1f;border-radius:0 0 4px 4px;
   box-shadow:0 12px 40px rgba(0,0,0,.9);
   padding:10px 12px 12px;
-  opacity:0;pointer-events:none;transform:translateY(0px)
+  opacity:0;pointer-events:none;transform:translateY(0px);
   transition:opacity .2s ease .15s,transform .2s ease .15s;z-index:10;
 }
 .nf-card:hover .card-pop{opacity:1;pointer-events:all;transform:none}
@@ -417,7 +417,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 .vid-title{font-weight:700;font-size:18px}
 #vid-frame{width:100%;height:100%;border:none;display:block}
 
-/* ═══════════════════════════════════════════════
+/* ═════════════════════════════════════════════��═
    IMAGE FULLSCREEN
 ═══════════════════════════════════════════════ */
 #img-fs{position:fixed;inset:0;z-index:5000;background:#000;display:none;align-items:center;justify-content:center}
@@ -540,7 +540,7 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
       <span class="hero-badge">HD</span>
       <span class="hero-badge">18+</span>
     </div>
-    <p class="hero-synop">Pro Editing · 4K HD Quality · Realistic AI — Premium creative services powered by cutting-edge artificial intelligence and human artistry. Transform your brand with cinematic visuals that stop the scroll.</p>
+    <p class="hero-synop">Pro Editing · 4K HD Quality · Realistic AI — Premium creative services powered by cutting-edge artificial intelligence and human artistry. Transform your brand with cinematic videos, stunning graphics, and fire beats.
     <div class="hero-tags-row">
       <span class="hero-tag-t">AI Videos</span><span class="hero-dot"></span>
       <span class="hero-tag-t">Photo Cloning</span><span class="hero-dot"></span>
@@ -999,153 +999,129 @@ function makeGalCard(title,imgArr,match,genres){
         <button class="pop-btn ml" title="More"><i class="fas fa-chevron-down"></i></button>
       </div>
       <div class="pop-meta">
-        <span class="pop-match">${match} Match</span>
-        <span class="pop-new">New</span>
-        <span class="pop-eps">${imgArr.length} Photos</span>
+        <span class="pop-match">${match||'95%'} Match</span>
+        <span class="pop-rating">E</span>
       </div>
       <div class="pop-genres">${gs}</div>
     </div>`;
-  c.querySelector('.card-thumb').addEventListener('click',()=>openGal(title,imgArr));
-  c.querySelector('.vbig').addEventListener('click',()=>openGal(title,imgArr));
+  c.querySelector('.card-thumb').addEventListener('click',()=>openGal(imgArr,title));
+  c.querySelector('.vbig').addEventListener('click',()=>openGal(imgArr,title));
   return c;
 }
 
-/* BUILD TOP-10 CARD */
-function makeTop10Card(item,num){
+/* TOP 10 CARD */
+function makeTop10Card(item,idx){
   const c=document.createElement('div');
   c.className='nf-card top10';
   c.innerHTML=`
     <div class="t10-inner">
-      <div class="t10-num">${num}</div>
-      <div class="t10-thumb"><img src="${item.img}" alt="${item.title}" loading="lazy"></div>
-    </div>
-    <div class="card-pop">
-      <div class="pop-title">${item.title}</div>
-      <div class="pop-actions">
-        <button class="pop-btn big"><i class="fas fa-play"></i></button>
-        <button class="pop-btn"><i class="fas fa-plus"></i></button>
-        <button class="pop-btn ml"><i class="fas fa-chevron-down"></i></button>
+      <div class="t10-num">${idx+1}</div>
+      <div class="t10-thumb">
+        <img src="${item.img}" alt="${item.title}" loading="lazy">
       </div>
-      <div class="pop-meta">
-        <span class="pop-match">Trending</span>
-        <span class="pop-new">Top 10</span>
-      </div>
-      <div class="pop-genres"><span class="pop-genre">${item.tag}</span></div>
     </div>`;
+  c.addEventListener('click',()=>{if(item.img)openImgFs(item.img);});
   return c;
 }
 
-/* POPULATE */
-(function(){
-  const vzSl=document.getElementById('vz-sl');
-  vizVideos.forEach(v=>vzSl.appendChild(makeVidCard(v)));
-
-  const adSl=document.getElementById('ad-sl');
-  adVideos.forEach(v=>adSl.appendChild(makeVidCard(v)));
-
-  const phSl=document.getElementById('ph-sl');
-  phSl.appendChild(makeGalCard('Photo Cloning',galleries.cloning,'98%',['Cloning','Portrait','Realistic']));
-  phSl.appendChild(makeGalCard('AI Photo Editing',galleries.editing,'96%',['Editing','Color','Retouching']));
-
-  const grSl=document.getElementById('gr-sl');
-  grSl.appendChild(makeGalCard('Logos',galleries.logos,'97%',['Logo','Brand','Vector']));
-  grSl.appendChild(makeGalCard('Posters',galleries.posters,'95%',['Poster','Print','A4']));
-  grSl.appendChild(makeGalCard('Branding',galleries.branding,'98%',['Brand','Identity','Kit']));
-
-  const t10=document.getElementById('t10-sl');
-  top10Items.forEach((item,i)=>t10.appendChild(makeTop10Card(item,i+1)));
-})();
-
-/* SLIDE ROW */
-function slideRow(id,dir){
-  const sl=document.getElementById(id);
-  const card=sl.firstElementChild;
-  const w=card?card.offsetWidth+4:260;
-  sl.scrollBy({left:dir*w*3,behavior:'smooth'});
-}
-
-/* VIDEO MODAL */
+/* MODALS */
 function openVid(id,title){
-  document.getElementById('vid-frame').src=`https://www.youtube.com/embed/${id}?autoplay=1&controls=1&rel=0`;
-  document.getElementById('vid-title').textContent=title;
   document.getElementById('vid-modal').classList.add('on');
+  document.getElementById('vid-title').textContent=title;
+  document.getElementById('vid-frame').src=`https://www.youtube.com/embed/${id}?autoplay=1`;
   document.body.style.overflow='hidden';
 }
 function closeVid(){
-  document.getElementById('vid-frame').src='';
   document.getElementById('vid-modal').classList.remove('on');
+  document.getElementById('vid-frame').src='';
   document.body.style.overflow='';
 }
 
-/* GALLERY MODAL */
-function openGal(title,imgs){
+function openGal(imgs,title){
+  document.getElementById('gal-modal').classList.add('on');
   document.getElementById('gal-title').textContent=title;
   const grid=document.getElementById('gal-grid');
   grid.innerHTML='';
-  imgs.forEach(src=>{
-    const d=document.createElement('div');
-    d.className='gal-item';
-    d.innerHTML=`<img src="${src}" alt="${title}" loading="lazy"><div class="gal-item-ov"><i class="fas fa-expand"></i></div>`;
-    d.addEventListener('click',()=>openImgFs(src));
-    grid.appendChild(d);
+  imgs.forEach(img=>{
+    const item=document.createElement('div');
+    item.className='gal-item';
+    item.innerHTML=`<img src="${img}" alt="" loading="lazy"><div class="gal-item-ov"><i class="fas fa-expand"></i></div>`;
+    item.addEventListener('click',()=>openImgFs(img));
+    grid.appendChild(item);
   });
-  document.getElementById('gal-modal').classList.add('on');
   document.body.style.overflow='hidden';
 }
-function closeGal(){document.getElementById('gal-modal').classList.remove('on');document.body.style.overflow=''}
-
-/* IMG FULLSCREEN */
-function openImgFs(src){document.getElementById('img-fs-img').src=src;document.getElementById('img-fs').classList.add('on')}
-function closeImgFs(){document.getElementById('img-fs').classList.remove('on')}
-document.getElementById('img-fs').addEventListener('click',function(e){if(e.target===this)closeImgFs()});
-
-/* ESC */
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeVid();closeGal();closeImgFs()}});
-
-/* INTERSECTION OBSERVER */
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.07});
-document.querySelectorAll('.nf-row').forEach(el=>io.observe(el));
-
-/* CATBAR ACTIVE */
-(()=>{
-  const ids=['ai-visualizers','ai-ads','ai-photos','graphics','beats'];
-  const btns=document.querySelectorAll('#catbar .cbt:not(.apply)');
-  const sio=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){const idx=ids.indexOf(e.target.id);if(idx>-1)btns.forEach((b,i)=>b.classList.toggle('active',i===idx))}});
-  },{threshold:.35});
-  ids.forEach(id=>{const el=document.getElementById(id);if(el)sio.observe(el)});
-})();
-
-/* TIDIO */
-function openTidio(){
-  try{
-    if(window.tidioChatApi){window.tidioChatApi.show();window.tidioChatApi.open();}
-    else document.addEventListener('tidioChat-ready',()=>{window.tidioChatApi.show();window.tidioChatApi.open();});
-  }catch(e){console.warn('Tidio:',e)}
+function closeGal(){
+  document.getElementById('gal-modal').classList.remove('on');
+  document.body.style.overflow='';
 }
 
-/* EMAILJS */
+function openImgFs(src){
+  document.getElementById('img-fs').classList.add('on');
+  document.getElementById('img-fs-img').src=src;
+  document.body.style.overflow='hidden';
+}
+function closeImgFs(){
+  document.getElementById('img-fs').classList.remove('on');
+  document.body.style.overflow='';
+}
+
+/* SLIDER */
+function slideRow(id,dir){
+  const row=document.getElementById(id);
+  if(!row) return;
+  const amount=row.offsetWidth*.35;
+  row.scrollBy({left:amount*dir,behavior:'smooth'});
+}
+
+/* POPULATE ROWS */
+function populateRows(){
+  const vzSl=document.getElementById('vz-sl');
+  vizVideos.forEach(v=>{vzSl.appendChild(makeVidCard(v));});
+
+  const adSl=document.getElementById('ad-sl');
+  adVideos.forEach(v=>{adSl.appendChild(makeVidCard(v));});
+
+  const phSl=document.getElementById('ph-sl');
+  phSl.appendChild(makeGalCard('Photo Cloning',galleries.cloning,'96%',['AI','Cloning','Professional']));
+  phSl.appendChild(makeGalCard('Photo Editing',galleries.editing,'94%',['AI','Editing','HD']));
+
+  const grSl=document.getElementById('gr-sl');
+  grSl.appendChild(makeGalCard('Logo Design',galleries.logos,'97%',['Design','Logo','Professional']));
+  grSl.appendChild(makeGalCard('Posters',galleries.posters,'95%',['Design','Print','Creative']));
+  grSl.appendChild(makeGalCard('Branding',galleries.branding,'98%',['Design','Branding','Full Package']));
+
+  const t10Sl=document.getElementById('t10-sl');
+  top10Items.forEach((item,idx)=>{t10Sl.appendChild(makeTop10Card(item,idx));});
+}
+
+window.addEventListener('load',populateRows);
+
+/* VISIBILITY */
+const rowObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{e.target.classList.toggle('vis',e.isIntersecting);});
+},{threshold:.1});
+document.querySelectorAll('.nf-row').forEach(r=>rowObs.observe(r));
+
+/* EMAIL */
+function openTidio(){if(window.tidioChatApi)window.tidioChatApi.display('show');else showToast('Chat loading...');}
+
 function sendEmail(e){
   e.preventDefault();
-  const btn=document.getElementById('sbtn'),form=document.getElementById('cform');
-  btn.disabled=true;btn.classList.add('ld');btn.querySelector('.stxt').textContent='Sending…';
-  emailjs.init('xw4PXGpbb_tEf_ilH');
-  emailjs.sendForm('service_3x6pyyq','template_hddk7oj',form)
-    .then(()=>{
-      btn.classList.remove('ld');btn.classList.add('ok');
-      btn.querySelector('.stxt').innerHTML='Application Sent! <i class="fas fa-check-circle"></i>';
-      form.reset();
-      setTimeout(()=>{btn.disabled=false;btn.classList.remove('ok');btn.querySelector('.stxt').innerHTML='Send Application <i class="fas fa-paper-plane"></i>';},5000);
+  const btn=document.getElementById('sbtn');
+  const form=document.getElementById('cform');
+  const data=new FormData(form);
+  btn.classList.add('ld');
+  btn.disabled=true;
+
+  fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',body:data,headers:{'Accept':'application/json'}})
+    .then(r=>{
+      if(r.ok){btn.classList.remove('ld');btn.classList.add('ok');btn.querySelector('.stxt').textContent='✓ Sent!';setTimeout(()=>{form.reset();btn.classList.remove('ok');btn.disabled=false;btn.querySelector('.stxt').textContent='Send Application ✈️';},2000);showToast('Application submitted!');}
+      else{btn.classList.remove('ld');btn.disabled=false;showToast('Error! Try again.');}
     })
-    .catch(err=>{
-      console.error(err);btn.classList.remove('ld');btn.disabled=false;
-      btn.querySelector('.stxt').innerHTML='Error — Try Again <i class="fas fa-exclamation-triangle"></i>';
-      setTimeout(()=>{btn.querySelector('.stxt').innerHTML='Send Application <i class="fas fa-paper-plane"></i>';},3000);
-    });
+    .catch(()=>{btn.classList.remove('ld');btn.disabled=false;showToast('Network error.');});
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="//code.tidio.co/dmu9qvhzljut4stjuyoiwxqfjptj1nbj.js" async></script>
 </body>
 </html>
