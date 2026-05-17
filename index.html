@@ -115,6 +115,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
   align-items:center;
   justify-content:center;
   flex-direction:column;
+      pointer-events:none;
 }
 #rc-intro.done{
   animation:introDone 0.8s ease forwards;
@@ -1178,10 +1179,9 @@ window.addEventListener('load',populateRows);
   setTimeout(()=>{
     intro.classList.add('done');
     setTimeout(()=>{
-      intro.style.display='none';
-      document.body.style.overflow='';
+      intro.remove();
     },900);
-  },3000);
+  },2500);
 })();
 
 /* VISIBILITY */
