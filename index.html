@@ -107,7 +107,8 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 .cbt:hover,.cbt.active{background:rgba(255,255,255,.2);color:var(--white)}
 .cbt.apply{background:transparent;border:1.5px solid var(--red);color:var(--red)}
 .cbt.apply:hover{background:var(--red);color:var(--white)}
-   #rc-intro{
+
+#rc-intro{
   position:fixed;inset:0;
   background:#000;
   z-index:99999;
@@ -115,7 +116,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
   align-items:center;
   justify-content:center;
   flex-direction:column;
-      pointer-events:none;
+  pointer-events:none;
 }
 #rc-intro.done{
   animation:introDone 0.8s ease forwards;
@@ -150,6 +151,10 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
   margin-top:12px;
   opacity:0;
   animation:fadeUp 1s ease 1.2s forwards;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
 .intro-line{
   width:0;height:2px;
@@ -195,8 +200,9 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 .sd-info span{font-size:11px;color:rgba(255,255,255,0.45);}
 .sd-info mark{background:none;color:#E50914;}
 .sd-empty{padding:28px 16px;text-align:center;font-size:13px;color:rgba(255,255,255,0.35);}
-.sd-cat-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;margin:4px;transition:all 0.2s;}
+.sd-cat-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;margin:4px 4px;cursor:pointer;transition:background 0.15s,border-color 0.15s;}
 .sd-cat-chip:hover{background:rgba(229,9,20,0.2);border-color:#E50914;}
+
 /* ═══════════════════════════════════════════════
    BILLBOARD / HERO
 ═══════════════════════════════════════════════ */
@@ -360,7 +366,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 .nf-card.wide .card-thumb{aspect-ratio:16/9}
 .nf-card.tall  .card-thumb{aspect-ratio:2/3}
   
-  /* ═══════════════════════════════════════════════
+/* ═══════════════════════════════════════════════
    TOP-10
 ═══════════════════════════════════════════════ */
 .nf-card.top10{width:clamp(190px,17vw,260px)}
@@ -495,7 +501,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 
 /* ═══════════════════════════════════════════════
    VIDEO MODAL
-═══════════════════════════════════════════════ */
+══════════════════════════════════════���════════ */
 #vid-modal{position:fixed;inset:0;z-index:4000;background:#000;display:none;flex-direction:column}
 #vid-modal.on{display:flex}
 .vid-hdr{
@@ -506,7 +512,7 @@ body{background:var(--bg);color:var(--white);font-family:'Montserrat',sans-serif
 .vid-title{font-weight:700;font-size:18px}
 #vid-frame{width:100%;height:100%;border:none;display:block}
 
-/* ═════════════════════════════════════════════��═
+/* ═══════════════════════════════════════════════
    IMAGE FULLSCREEN
 ═══════════════════════════════════════════════ */
 #img-fs{position:fixed;inset:0;z-index:5000;background:#000;display:none;align-items:center;justify-content:center}
@@ -603,8 +609,8 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
     <button class="nav-ham" onclick="scrollTo2('contact')"><i class="fas fa-bars"></i></button>
   </div>
 </nav>
-   <div id="srch-drop"><div id="sd-inner"></div></div>
-   
+<div id="srch-drop"><div id="sd-inner"></div></div>
+
 <!-- CATEGORY BAR -->
 <div id="catbar">
   <button class="cbt active" onclick="scrollTo2('ai-visualizers')">AI Visualizers</button>
@@ -618,9 +624,7 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
 <!-- HERO BILLBOARD -->
 <section id="hero">
   <div class="hero-vid-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/HMvHTSN_ooE?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=HMvHTSN_ooE"
-      allow="autoplay;encrypted-media" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/HMvHTSN_ooE?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=HMvHTSN_ooE" allow="autoplay;encrypted-media" allowfullscreen></iframe>
   </div>
   <div class="hero-vignette"></div>
   <div class="hero-content">
@@ -631,7 +635,7 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
       <span class="hero-badge">HD</span>
       <span class="hero-badge">18+</span>
     </div>
-    <p class="hero-synop">Pro Editing · 4K HD Quality · Realistic AI — Premium creative services powered by cutting-edge artificial intelligence and human artistry. Transform your brand with cinematic videos, stunning graphics, and fire beats.
+    <p class="hero-synop">Pro Editing · 4K HD Quality · Realistic AI — Premium creative services powered by cutting-edge artificial intelligence and human artistry. Transform your brand with cinematic videos, stunning visuals, and professional beats.</p>
     <div class="hero-tags-row">
       <span class="hero-tag-t">AI Videos</span><span class="hero-dot"></span>
       <span class="hero-tag-t">Photo Cloning</span><span class="hero-dot"></span>
@@ -644,8 +648,8 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
     </div>
   </div>
 </section>
-  
-  <!-- CONTENT ROWS -->
+
+<!-- CONTENT ROWS -->
 <div class="rows-wrap">
 
   <!-- Row 1: AI Visualizers -->
@@ -768,7 +772,7 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
   </div>
 </section>
 
-  <!-- FOOTER -->
+<!-- FOOTER -->
 <footer>
   <div class="ft-social">
     <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -821,9 +825,6 @@ footer{padding:48px 4% 24px;border-top:1px solid rgba(255,255,255,.1)}
 
 <div id="toast"></div>
 
-<!-- ════════════════════════════════════════
-     JAVASCRIPT
-════════════════════════════════════════ -->
 <script>
 /* DATA */
 const galleries={
@@ -858,426 +859,282 @@ const galleries={
 };
 
 const vizVideos=[
-  {id:'Pi05jb9xXtU',title:'Music Visualizer I',  match:'97%',genres:['Electronic','Visual','4K']},
-  {id:'fLsiRfpwbz8',title:'Music Visualizer II', match:'95%',genres:['Trap','Animated','Beat']},
+  {id:'Pi05jb9xXtU',title:'Music Visualizer I',match:'97%',genres:['Electronic','Visual','4K']},
+  {id:'fLsiRfpwbz8',title:'Music Visualizer II',match:'95%',genres:['Trap','Animated','Beat']},
   {id:'YpjmFiI_6Ms',title:'Music Visualizer III',match:'98%',genres:['Lo-Fi','Motion','HD']},
-  {id:'0lMemK0xYXs',title:'Music Visualizer IV', match:'94%',genres:['Afro','Colorful','Pro']}, 
-   {id:'cJjmowtYDYU',title:'Music Visualizer V',match:'93%',genres:['RnB','Motion','HD']}
+  {id:'0lMemK0xYXs',title:'Music Visualizer IV',match:'94%',genres:['Afro','Colorful','Pro']},
+  {id:'cJjmowtYDYU',title:'Music Visualizer V',match:'93%',genres:['RnB','Motion','HD']}
 ];
+
 const adVideos=[
-  {id:'zIUotjon9PI',title:'AI Ad Campaign I',  match:'96%',genres:['Brand','Cinematic','30s']},
-  {id:'s6cpSzRMfw8',title:'AI Ad Campaign II', match:'93%',genres:['Social','Product','UGC']},
+  {id:'zIUotjon9PI',title:'AI Ad Campaign I',match:'96%',genres:['Brand','Cinematic','30s']},
+  {id:'s6cpSzRMfw8',title:'AI Ad Campaign II',match:'93%',genres:['Social','Product','UGC']},
   {id:'XxHxFwlWGD8',title:'AI Ad Campaign III',match:'97%',genres:['Luxury','Fashion','4K']},
-  {id:'TnKSGkY5Hds',title:'AI Ad Campaign IV', match:'95%',genres:['Viral','Reels','60s']}
+  {id:'TnKSGkY5Hds',title:'AI Ad Campaign IV',match:'95%',genres:['Viral','Reels','60s']}
 ];
+
 const top10Items=[
   {title:'AI Music Visualizer',img:galleries.cloning[0],tag:'#1 in AI Video'},
-  {title:'Photo Cloning',     img:galleries.cloning[1],tag:'#2 in Cloning'},
-  {title:'Logo Design',       img:galleries.logos[0],  tag:'#3 in Graphics'},
-  {title:'AI Ad Videos',      img:galleries.cloning[2],tag:'#4 in Ads'},
-  {title:'Branding Package',  img:galleries.branding[0],tag:'#5 in Branding'},
-  {title:'AI Photo Editing',  img:galleries.editing[0],tag:'#6 in Editing'},
-  {title:'Poster Design',     img:galleries.posters[0],tag:'#7 in Print'},
-  {title:'Beats License',     img:galleries.branding[1],tag:'#8 in Audio'},
-  {title:'Full Package',      img:galleries.logos[1],  tag:'#9 in Bundle'},
-  {title:'Brand Identity',    img:galleries.branding[2],tag:'#10 in Identity'}
+  {title:'Photo Cloning',img:galleries.cloning[1],tag:'#2 in Cloning'},
+  {title:'Logo Design',img:galleries.logos[0],tag:'#3 in Graphics'},
+  {title:'AI Ad Videos',img:galleries.cloning[2],tag:'#4 in Ads'},
+  {title:'Branding Package',img:galleries.branding[0],tag:'#5 in Branding'},
+  {title:'AI Photo Editing',img:galleries.editing[0],tag:'#6 in Editing'},
+  {title:'Poster Design',img:galleries.posters[0],tag:'#7 in Print'},
+  {title:'Beats License',img:galleries.branding[1],tag:'#8 in Audio'},
+  {title:'Full Package',img:galleries.logos[1],tag:'#9 in Bundle'},
+  {title:'Brand Identity',img:galleries.branding[2],tag:'#10 in Identity'}
 ];
 
 /* NAV */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('solid',scrollY>10);
 });
-function scrollTo2(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+
+function scrollTo2(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
 
 /* SEARCH */
 const SEARCH_DB=[];
-function doSearch(){return;}
-let lastMark=null;
+let searchOpen=false;
 
 function buildSearchIndex(){
   document.querySelectorAll('.nf-card.wide').forEach(card=>{
     const title=card.querySelector('.pop-title')?.textContent||'';
-    const genres=[...card.querySelectorAll('.pop-gen')].map(g=>g.textContent).join(', ');
+    const genres=[...card.querySelectorAll('.pop-genre')].map(g=>g.textContent).join(', ');
     const thumb=card.querySelector('.card-thumb img')?.src||'';
-    const section=card.closest('.nf-row')?.previousElementSibling?.querySelector('.row-title')?.textContent||'Video';
-    if(title) SEARCH_DB.push({type:'video',title,genres,thumb,section,el:card});
+    if(title) SEARCH_DB.push({type:'video',title,genres,thumb,el:card});
   });
 
   document.querySelectorAll('.nf-card.tall').forEach(card=>{
     const title=card.querySelector('.pop-title')?.textContent||'';
-    const genres=[...card.querySelectorAll('.pop-gen')].map(g=>g.textContent).join(', ');
+    const genres=[...card.querySelectorAll('.pop-genre')].map(g=>g.textContent).join(', ');
     const thumb=card.querySelector('.card-thumb img')?.src||'';
-    const section=card.closest('.nf-row')?.previousElementSibling?.querySelector('.row-title')?.textContent||'Gallery';
-    if(title) SEARCH_DB.push({type:'gallery',title,genres,thumb,section,el:card});
+    if(title) SEARCH_DB.push({type:'gallery',title,genres,thumb,el:card});
   });
 
   document.querySelectorAll('.row-title').forEach(t=>{
     const name=t.textContent.trim();
-    const row=t.closest('.nf-row');
-    if(name&&row) SEARCH_DB.push({type:'category',title:name,genres:'Category',thumb:'',section:'Browse',el:row});
+    if(name) SEARCH_DB.push({type:'category',title:name,genres:'Category',thumb:'',section:'Browse'});
   });
 }
 
-function hl(str,q){
-  if(!q) return str;
-  return str.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi'),'<mark>$1</mark>');
-}
-
-function renderDrop(q){
-  const drop=document.getElementById('srch-drop');
-  const inner=document.getElementById('sd-inner');
-  const lq=q.toLowerCase().trim();
-  if(!lq){drop.classList.remove('open');return;}
-
-  const results=SEARCH_DB.filter(item=>
-    item.title.toLowerCase().includes(lq)||
-    item.genres.toLowerCase().includes(lq)||
-    item.section.toLowerCase().includes(lq)
-  );
-
-  if(!results.length){
-    inner.innerHTML=`<div class="sd-empty">😕 No results for "<strong>${q}</strong>"</div>`;
-    drop.classList.add('open');
-    return;
-  }
-
-  const groups={video:[],gallery:[],category:[]};
-  results.forEach(r=>{if(groups[r.type])groups[r.type].push(r);});
-  const labels={video:'🎬 Videos',gallery:'🖼️ Gallery & Photos',category:'📂 Categories'};
-
-  let html='';
-  Object.entries(groups).forEach(([type,items])=>{
-    if(!items.length) return;
-    html+=`<div class="sd-section"><div class="sd-label">${labels[type]}</div>`;
-    if(type==='category'){
-      html+=`<div style="padding:6px 12px">`;
-      items.slice(0,6).forEach(item=>{
-        html+=`<span class="sd-cat-chip" data-idx="${SEARCH_DB.indexOf(item)}">📂 ${hl(item.title,q)}</span>`;
-      });
-      html+=`</div>`;
-    } else {
-      items.slice(0,4).forEach(item=>{
-        html+=`<div class="sd-item" data-idx="${SEARCH_DB.indexOf(item)}">
-          <img class="sd-thumb${type==='gallery'?' tall':''}" src="${item.thumb}" alt="" onerror="this.style.display='none'"/>
-          <div class="sd-info">
-            <p>${hl(item.title,q)}</p>
-            <span>${hl(item.section,q)} • ${hl(item.genres,q)}</span>
-          </div>
-        </div>`;
-      });
-    }
-    html+=`</div>`;
-  });
-
-  inner.innerHTML=html;
-  drop.classList.add('open');
-
-  inner.querySelectorAll('[data-idx]').forEach(el=>{
-    el.addEventListener('click',()=>{
-      const item=SEARCH_DB[+el.dataset.idx];
-      if(item?.el){
-        drop.classList.remove('open');
-        searchOpen=false;
-        document.getElementById('nav-search')?.classList.remove('open');
-        const inp=document.querySelector('#nav-search input');
-        if(inp) inp.value='';
-        item.el.scrollIntoView({behavior:'smooth',block:'center'});
-        item.el.style.outline='2px solid #E50914';
-        item.el.style.outlineOffset='3px';
-        setTimeout(()=>{item.el.style.outline='';item.el.style.outlineOffset='';},2000);
-      }
-    });
-  });
-}
-
-let searchOpen=false;
 function toggleSearch(){
   const wrap=document.getElementById('nav-search'),inp=wrap?.querySelector('input');
   searchOpen=!searchOpen;
   wrap?.classList.toggle('open',searchOpen);
   if(searchOpen) setTimeout(()=>inp?.focus(),310);
-  else{
-    document.getElementById('srch-drop')?.classList.remove('open');
-    if(inp) inp.value='';
-  }
+  else document.getElementById('srch-drop')?.classList.remove('open');
 }
 
-document.getElementById('srch')?.addEventListener('keyup',e=>{
-  if(e.key==='Escape'){toggleSearch();return;}
-  renderDrop(e.target.value);
+document.getElementById('srch')?.addEventListener('input',(e)=>{
+  renderSearch(e.target.value);
 });
 
-document.addEventListener('click',e=>{
-  if(!e.target.closest('#nav-search')&&!e.target.closest('#srch-drop')){
-    document.getElementById('srch-drop')?.classList.remove('open');
+function renderSearch(q){
+  const drop=document.getElementById('srch-drop');
+  const inner=document.getElementById('sd-inner');
+  const lq=q.toLowerCase().trim();
+  
+  if(!lq){drop.classList.remove('open');return;}
+  const results=SEARCH_DB.filter(item=>item.title.toLowerCase().includes(lq)||item.genres.toLowerCase().includes(lq));
+  
+  if(!results.length){
+    inner.innerHTML=`<div class="sd-empty">No results for "${q}"</div>`;
+    drop.classList.add('open');
+    return;
   }
-});
-
-setTimeout(buildSearchIndex,800);
-
-/* TOAST */
-let toastT;
-   
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600)}
-
-/* BUILD VIDEO CARD */
-function makeVidCard(v){
-  const thumb=`https://img.youtube.com/vi/${v.id}/mqdefault.jpg`;
-  const c=document.createElement('div');
-  c.className='nf-card wide';
-  c.style.width='clamp(180px,16vw,260px)';
-  const gs=v.genres.map((g,i,a)=>`<span class="pop-genre">${g}</span>${i<a.length-1?'<span class="pop-sep"></span>':''}`).join('');
-  c.innerHTML=`
-    <div class="card-thumb">
-      <img src="${thumb}" alt="${v.title}" loading="lazy">
-      <div class="card-ov"><i class="fas fa-play-circle card-ov-ico"></i></div>
-    </div>
-    <div class="card-pop">
-      <div class="pop-title">${v.title}</div>
-      <div class="pop-actions">
-        <button class="pop-btn big pbig" title="Play"><i class="fas fa-play"></i></button>
-        <button class="pop-btn" title="Add to List"><i class="fas fa-plus"></i></button>
-        <button class="pop-btn" title="Like"><i class="fas fa-thumbs-up"></i></button>
-        <button class="pop-btn" title="Dislike"><i class="fas fa-thumbs-down"></i></button>
-        <button class="pop-btn ml" title="More Info"><i class="fas fa-chevron-down"></i></button>
-      </div>
-      <div class="pop-meta">
-        <span class="pop-match">${v.match} Match</span>
-        <span class="pop-new">New</span>
-        <span class="pop-rating">18+</span>
-        <span class="pop-eps">4K HD</span>
-      </div>
-      <div class="pop-genres">${gs}</div>
-    </div>`;
-  c.querySelector('.card-thumb').addEventListener('click',()=>openVid(v.id,v.title));
-  c.querySelector('.pbig').addEventListener('click',()=>openVid(v.id,v.title));
-  return c;
+  
+  let html='';
+  results.slice(0,8).forEach(item=>{
+    html+=`<div class="sd-item"><img class="sd-thumb" src="${item.thumb}" alt="" onerror="this.style.display='none'"/><div class="sd-info"><p>${item.title}</p><span>${item.genres}</span></div></div>`;
+  });
+  
+  inner.innerHTML=html;
+  drop.classList.add('open');
 }
 
-/* BUILD GALLERY CARD (tall) */
-function makeGalCard(title,imgArr,match,genres){
-  const c=document.createElement('div');
-  c.className='nf-card tall';
-  c.style.width='clamp(130px,11vw,180px)';
-  const gs=(genres||[]).map((g,i,a)=>`<span class="pop-genre">${g}</span>${i<a.length-1?'<span class="pop-sep"></span>':''}`).join('');
-  c.innerHTML=`
-    <div class="card-thumb">
-      <img src="${imgArr[0]||''}" alt="${title}" loading="lazy">
-      <div class="card-ov"><i class="fas fa-images card-ov-ico"></i></div>
-    </div>
-    <div class="card-pop">
-      <div class="pop-title">${title}</div>
-      <div class="pop-actions">
-        <button class="pop-btn big vbig" title="View Gallery"><i class="fas fa-images"></i></button>
-        <button class="pop-btn" title="Add to List"><i class="fas fa-plus"></i></button>
-        <button class="pop-btn" title="Like"><i class="fas fa-thumbs-up"></i></button>
-        <button class="pop-btn ml" title="More"><i class="fas fa-chevron-down"></i></button>
-      </div>
-      <div class="pop-meta">
-        <span class="pop-match">${match||'95%'} Match</span>
-        <span class="pop-rating">E</span>
-      </div>
-      <div class="pop-genres">${gs}</div>
-    </div>`;
-  c.querySelector('.card-thumb').addEventListener('click',()=>openGal(imgArr,title));
-  c.querySelector('.vbig').addEventListener('click',()=>openGal(imgArr,title));
-  return c;
+/* CARD RENDERING */
+function renderCards(){
+  renderVideoRow('vz-sl',vizVideos);
+  renderVideoRow('ad-sl',adVideos);
+  renderGalleryRow('ph-sl',galleries.cloning,'Photo Cloning');
+  renderGalleryRow('gr-sl',galleries.logos,'Logo Design');
+  renderTop10Row();
 }
 
-/* TOP 10 CARD */
-function makeTop10Card(item,idx){
-  const c=document.createElement('div');
-  c.className='nf-card top10';
-  c.innerHTML=`
-    <div class="t10-inner">
-      <div class="t10-num">${idx+1}</div>
-      <div class="t10-thumb">
-        <img src="${item.img}" alt="${item.title}" loading="lazy">
+function renderVideoRow(slId,videos){
+  const sl=document.getElementById(slId);
+  if(!sl) return;
+  sl.innerHTML=videos.map(v=>`
+    <div class="nf-card wide" onclick="playVideo('${v.id}','${v.title}')">
+      <div class="card-thumb">
+        <img src="https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg" alt="${v.title}">
+        <div class="card-ov"><i class="fas fa-play card-ov-ico"></i></div>
       </div>
-    </div>`;
-  c.addEventListener('click',()=>{if(item.img)openImgFs(item.img);});
-  return c;
+      <div class="card-pop">
+        <div class="pop-actions">
+          <button class="pop-btn big"><i class="fas fa-play"></i></button>
+          <button class="pop-btn"><i class="fas fa-heart"></i></button>
+          <button class="pop-btn"><i class="fas fa-share"></i></button>
+        </div>
+        <div class="pop-meta">
+          <span class="pop-match">${v.match}</span>
+          ${v.genres.map(g=>`<span class="pop-genre">${g}</span>`).join('')}
+        </div>
+        <div class="pop-title">${v.title}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderGalleryRow(slId,images,title){
+  const sl=document.getElementById(slId);
+  if(!sl) return;
+  sl.innerHTML=images.map((img,i)=>`
+    <div class="nf-card tall" onclick="openGallery('${title}')">
+      <div class="card-thumb">
+        <img src="${img}" alt="${title}">
+        <div class="card-ov"><i class="fas fa-images card-ov-ico"></i></div>
+      </div>
+      <div class="card-pop">
+        <div class="pop-actions">
+          <button class="pop-btn big"><i class="fas fa-expand"></i></button>
+        </div>
+        <div class="pop-title">${title}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderTop10Row(){
+  const sl=document.getElementById('t10-sl');
+  if(!sl) return;
+  sl.innerHTML=top10Items.map((item,i)=>`
+    <div class="nf-card top10">
+      <div class="t10-inner">
+        <div class="t10-num">${i+1}</div>
+        <div class="t10-thumb">
+          <img src="${item.img}" alt="${item.title}">
+        </div>
+      </div>
+      <div class="card-pop">
+        <div class="pop-title">${item.title}</div>
+        <span style="font-size:10px;color:rgba(255,255,255,.6)">${item.tag}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function slideRow(id,dir){
+  const row=document.getElementById(id);
+  if(!row) return;
+  const scrollAmount=300;
+  row.scrollBy({left:dir*scrollAmount,behavior:'smooth'});
 }
 
 /* MODALS */
-function openVid(id,title){
+function playVideo(id,title){
   document.getElementById('vid-modal').classList.add('on');
-  document.getElementById('vid-title').textContent=title;
   document.getElementById('vid-frame').src=`https://www.youtube.com/embed/${id}?autoplay=1`;
-  document.body.style.overflow='hidden';
+  document.getElementById('vid-title').textContent=title;
 }
+
 function closeVid(){
   document.getElementById('vid-modal').classList.remove('on');
   document.getElementById('vid-frame').src='';
-  document.body.style.overflow='';
 }
 
-function openGal(imgs,title){
+function openGallery(title){
   document.getElementById('gal-modal').classList.add('on');
   document.getElementById('gal-title').textContent=title;
   const grid=document.getElementById('gal-grid');
-  grid.innerHTML='';
-  imgs.forEach(img=>{
-    const item=document.createElement('div');
-    item.className='gal-item';
-    item.innerHTML=`<img src="${img}" alt="" loading="lazy"><div class="gal-item-ov"><i class="fas fa-expand"></i></div>`;
-    item.addEventListener('click',()=>openImgFs(img));
-    grid.appendChild(item);
-  });
-  document.body.style.overflow='hidden';
+  const images=galleries[title.toLowerCase().replace(' ','')]||galleries.cloning;
+  grid.innerHTML=images.map(img=>`
+    <div class="gal-item" onclick="openImgFs('${img}')">
+      <img src="${img}" alt="">
+      <div class="gal-item-ov"><i class="fas fa-expand"></i></div>
+    </div>
+  `).join('');
 }
+
 function closeGal(){
   document.getElementById('gal-modal').classList.remove('on');
-  document.body.style.overflow='';
 }
 
 function openImgFs(src){
   document.getElementById('img-fs').classList.add('on');
   document.getElementById('img-fs-img').src=src;
-  document.body.style.overflow='hidden';
 }
+
 function closeImgFs(){
   document.getElementById('img-fs').classList.remove('on');
-  document.body.style.overflow='';
 }
 
-/* SLIDER */
-function slideRow(id,dir){
-  const row=document.getElementById(id);
-  if(!row) return;
-  const amount=row.offsetWidth*.35;
-  row.scrollBy({left:amount*dir,behavior:'smooth'});
-}
-
-/* POPULATE ROWS */
-function populateRows(){
-  const vzSl=document.getElementById('vz-sl');
-  vizVideos.forEach(v=>{vzSl.appendChild(makeVidCard(v));});
-
-  const adSl=document.getElementById('ad-sl');
-  adVideos.forEach(v=>{adSl.appendChild(makeVidCard(v));});
-
-  const phSl=document.getElementById('ph-sl');
-  phSl.appendChild(makeGalCard('Photo Cloning',galleries.cloning,'96%',['AI','Cloning','Professional']));
-  phSl.appendChild(makeGalCard('Photo Editing',galleries.editing,'94%',['AI','Editing','HD']));
-
-  const grSl=document.getElementById('gr-sl');
-  grSl.appendChild(makeGalCard('Logo Design',galleries.logos,'97%',['Design','Logo','Professional']));
-  grSl.appendChild(makeGalCard('Posters',galleries.posters,'95%',['Design','Print','Creative']));
-  grSl.appendChild(makeGalCard('Branding',galleries.branding,'98%',['Design','Branding','Full Package']));
-
-  const t10Sl=document.getElementById('t10-sl');
-  top10Items.forEach((item,idx)=>{t10Sl.appendChild(makeTop10Card(item,idx));});
-}
-
-window.addEventListener('load',populateRows);
-   
-   /* NETFLIX INTRO */
-(function(){
-  const intro=document.getElementById('rc-intro');
-  if(!intro) return;
-  setTimeout(()=>{
-    intro.classList.add('done');
-    setTimeout(()=>{
-      intro.remove();
-    },900);
-  },2500);
-})();
-
-/* VISIBILITY */
-const rowObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{e.target.classList.toggle('vis',e.isIntersecting);});
-},{threshold:.1});
-document.querySelectorAll('.nf-row').forEach(r=>rowObs.observe(r));
-
-/* EMAIL */
-function openTidio(){if(window.tidioChatApi)window.tidioChatApi.display('show');else showToast('Chat loading...');}
-
+/* CONTACT */
 function sendEmail(e){
   e.preventDefault();
   const btn=document.getElementById('sbtn');
-  const form=document.getElementById('cform');
-  const data=new FormData(form);
   btn.classList.add('ld');
-  btn.disabled=true;
-
-  fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',body:data,headers:{'Accept':'application/json'}})
-    .then(r=>{
-      if(r.ok){btn.classList.remove('ld');btn.classList.add('ok');btn.querySelector('.stxt').textContent='✓ Sent!';setTimeout(()=>{form.reset();btn.classList.remove('ok');btn.disabled=false;btn.querySelector('.stxt').textContent='Send Application ✈️';},2000);showToast('Application submitted!');}
-      else{btn.classList.remove('ld');btn.disabled=false;showToast('Error! Try again.');}
+  
+  const formData=new FormData(document.getElementById('cform'));
+  const data={
+    user_name:formData.get('user_name'),
+    user_email:formData.get('user_email'),
+    service:formData.get('service'),
+    message:formData.get('message')
+  };
+  
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      access_key:'YOUR_ACCESS_KEY_HERE',
+      ...data
     })
-    .catch(()=>{btn.classList.remove('ld');btn.disabled=false;showToast('Network error.');});
-}
-   /* HAMBURGER MENU */
-function openMenu(){
-  document.getElementById('side-menu').classList.add('open');
-  document.getElementById('menu-overlay').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeMenu(){
-  document.getElementById('side-menu').classList.remove('open');
-  document.getElementById('menu-overlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-/* ACTIVE SECTION HIGHLIGHT */
-const sideLinks=document.querySelectorAll('.side-nav-link');
-const secIds=['ai-visualizers','ai-ads','ai-photos','graphics','beats','contact'];
-const secObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const id=e.target.id;
-      sideLinks.forEach(l=>{
-        l.classList.toggle('active',l.getAttribute('onclick')?.includes(id));
-      });
+  }).then(r=>r.json()).then(res=>{
+    btn.classList.remove('ld');
+    if(res.success){
+      btn.classList.add('ok');
+      document.getElementById('cform').reset();
+      setTimeout(()=>btn.classList.remove('ok'),2000);
     }
+  }).catch(e=>{
+    btn.classList.remove('ld');
+    console.error(e);
   });
-},{threshold:0.3});
-secIds.forEach(id=>{
-  const el=document.getElementById(id);
-  if(el) secObs.observe(el);
-});
-
-/* YOUTUBE POPUP */
-document.getElementById('notif-btn')?.addEventListener('click',e=>{
-  e.stopPropagation();
-  document.getElementById('yt-popup').classList.toggle('open');
-});
-document.addEventListener('click',e=>{
-  if(!e.target.closest('.yt-sub-wrap')){
-    document.getElementById('yt-popup')?.classList.remove('open');
-  }
-});
-
-/* BROWSER NOTIFICATIONS */
-function enableNotifs(){
-  if('Notification' in window){
-    Notification.requestPermission().then(p=>{
-      if(p==='granted'){
-        new Notification('Reinblacks Creativz',{
-          body:'You will now get updates from Reinblacks!',
-          icon:'https://ui-avatars.com/api/?name=RC&background=E50914&color=fff'
-        });
-      }
-    });
-  }
 }
 
-<!-- NETFLIX INTRO -->
-<div id="rc-intro">
-  <div class="intro-glow"></div>
-  <div class="intro-brand">REINBLACKS <span>CREATIVZ</span></div>
-  <div class="intro-sub">Premium Creative Studio</div>
-  <div class="intro-line"></div>
-</div>
+function openTidio(){
+  window.Tidio=window.Tidio||{};
+  window.Tidio.chat=window.Tidio.chat||{};
+  window.Tidio.chat.open=function(){console.log('Chat opened')};
+}
 
-/* ESC closes menu */
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape') closeMenu();
+/* INIT */
+window.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    document.getElementById('rc-intro').classList.add('done');
+    renderCards();
+    buildSearchIndex();
+  },3000);
+  
+  document.querySelectorAll('.nf-row').forEach(row=>{
+    row.classList.add('vis');
+  });
+});
+
+/* CLOSE MODALS ON ESC */
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='Escape'){
+    document.getElementById('vid-modal').classList.remove('on');
+    document.getElementById('gal-modal').classList.remove('on');
+    document.getElementById('img-fs').classList.remove('on');
+  }
 });
 </script>
-   
-   <script src="//code.tidio.co/dmu9qvhzljut4stjuyoiwxqfjptj1nbj.js" async></script>
 
 </body>
 </html>
