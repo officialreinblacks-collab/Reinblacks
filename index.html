@@ -1147,6 +1147,73 @@ function sendEmail(e){
     })
     .catch(()=>{btn.classList.remove('ld');btn.disabled=false;showToast('Network error.');});
 }
+   /* HAMBURGER MENU */
+function openMenu(){
+  document.getElementById('side-menu').classList.add('open');
+  document.getElementById('menu-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMenu(){
+  document.getElementById('side-menu').classList.remove('open');
+  document.getElementById('menu-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* ACTIVE SECTION HIGHLIGHT */
+const sideLinks=document.querySelectorAll('.side-nav-link');
+const secIds=['ai-visualizers','ai-ads','ai-photos','graphics','beats','contact'];
+const secObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      sideLinks.forEach(l=>{
+        l.classList.toggle('active',l.getAttribute('onclick')?.includes(id));
+      });
+    }
+  });
+},{threshold:0.3});
+secIds.forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) secObs.observe(el);
+});
+
+/* YOUTUBE POPUP */
+document.getElementById('notif-btn')?.addEventListener('click',e=>{
+  e.stopPropagation();
+  document.getElementById('yt-popup').classList.toggle('open');
+});
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.yt-sub-wrap')){
+    document.getElementById('yt-popup')?.classList.remove('open');
+  }
+});
+
+/* BROWSER NOTIFICATIONS */
+function enableNotifs(){
+  if('Notification' in window){
+    Notification.requestPermission().then(p=>{
+      if(p==='granted'){
+        new Notification('Reinblacks Creativz',{
+          body:'You will now get updates from Reinblacks!',
+          icon:'https://ui-avatars.com/api/?name=RC&background=E50914&color=fff'
+        });
+      }
+    });
+  }
+}
+
+<!-- NETFLIX INTRO -->
+<div id="rc-intro">
+  <div class="intro-glow"></div>
+  <div class="intro-brand">REINBLACKS <span>CREATIVZ</span></div>
+  <div class="intro-sub">Premium Creative Studio</div>
+  <div class="intro-line"></div>
+</div>
+
+/* ESC closes menu */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeMenu();
+});
 </script>
    
    <script src="//code.tidio.co/dmu9qvhzljut4stjuyoiwxqfjptj1nbj.js" async></script>
