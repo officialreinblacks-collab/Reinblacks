@@ -882,22 +882,6 @@ const top10Items=[
   {title:'Brand Identity',    img:galleries.branding[2],tag:'#10 in Identity'}
 ];
 
-/* LOADER */
-(()=>{
-  const fill=document.getElementById('ldfill');
-  const loader=document.getElementById('loader');
-  let w=0;
-  document.body.style.overflow='hidden';
-  const iv=setInterval(()=>{
-    w=Math.min(w+4+Math.random()*5,100);
-    fill.style.width=w+'%';
-    if(w>=100){
-      clearInterval(iv);
-      setTimeout(()=>{loader.classList.add('gone');document.body.style.overflow='';},110);
-    }
-  },24);
-})();
-
 /* NAV */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('solid',scrollY>10);
