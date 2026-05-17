@@ -1186,6 +1186,18 @@ function populateRows(){
 }
 
 window.addEventListener('load',populateRows);
+   /* NETFLIX INTRO */
+(function(){
+  const intro=document.getElementById('rc-intro');
+  if(!intro) return;
+  setTimeout(()=>{
+    intro.classList.add('done');
+    setTimeout(()=>{
+      intro.style.display='none';
+      document.body.style.overflow='';
+    },900);
+  },3000);
+})();
 
 /* VISIBILITY */
 const rowObs=new IntersectionObserver(entries=>{
